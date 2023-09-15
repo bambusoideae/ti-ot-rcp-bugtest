@@ -164,6 +164,10 @@ extern void tiopCUIUpdateConnStatus(cuiConn status);
  */
 extern void tiopCUIUpdateApp(char* appInfo);
 
+extern void tiopCUIUpdateSensor(char* info);
+extern void tiopCUIUpdateServer(char* info);
+extern void tiopCUIUpdateServer2(char* info);
+
 /**
  * @brief Handle reading user input into the panid configuration in CUI
  *

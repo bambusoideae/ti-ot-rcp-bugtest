@@ -90,7 +90,7 @@ int main(void)
 
     SHA2_init();
 
-    empty_taskCreate();
+    app_taskCreate();
 
     /* Start sys/bios, this will never return */
     BIOS_start();

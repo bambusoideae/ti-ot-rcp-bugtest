@@ -68,26 +68,26 @@
 /**
  * Priority of the Application task.
  */
-#ifndef TASK_CONFIG_EMPTY_TASK_PRIORITY
-#define TASK_CONFIG_EMPTY_TASK_PRIORITY   2
+#ifndef TASK_CONFIG_APP_TASK_PRIORITY
+#define TASK_CONFIG_APP_TASK_PRIORITY   2
 #endif
 
 /**
  * Size of the empty task call stack.
  */
-#ifndef TASK_CONFIG_EMPTY_TASK_STACK_SIZE
-#define TASK_CONFIG_EMPTY_TASK_STACK_SIZE 1096
+#ifndef TASK_CONFIG_APP_TASK_STACK_SIZE
+#define TASK_CONFIG_APP_TASK_STACK_SIZE 8192
 #endif
 
 /**
- * Creation funciton for the OpenThread Stack task.
+ * Creation function for the OpenThread Stack task.
  */
 extern void OtStack_taskCreate(void);
 
 /**
- * Creation funciton for the empty application task.
+ * Creation function for the app application task.
  */
-extern void empty_taskCreate(void);
+extern void app_taskCreate(void);
 
 #endif /* TASK_CONFIG_H_ */
 

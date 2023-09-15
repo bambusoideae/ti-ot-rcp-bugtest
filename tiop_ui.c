@@ -67,6 +67,9 @@ static uint32_t nwkInfoLine3;
 static uint32_t deviceRoleLine;
 static uint32_t connStatusLine;
 static uint32_t appInfoLine;
+static uint32_t sensorInfoLine;
+static uint32_t serverInfoLine;
+static uint32_t server2InfoLine;
 
 static otPanId          panid;
 static uint8_t          display_channel;
@@ -112,7 +115,7 @@ void tiopCUIInit(char* appString, Button_Handle* rightButtonHandle)
     CUI_paramsInit(&cuiParams);
     CUI_init(&cuiParams);
     CUI_clientParamsInit(&clientParams);
-    clientParams.maxStatusLines = 7;
+    clientParams.maxStatusLines = 10;
 
     strncpy(clientParams.clientName, "Thread CUI application", MAX_CLIENT_NAME_LEN);
 
@@ -163,6 +166,9 @@ void tiopCUIInit(char* appString, Button_Handle* rightButtonHandle)
     CUI_statusLineResourceRequest(clientHandle, "  Role Info", false, &deviceRoleLine);
     CUI_statusLineResourceRequest(clientHandle, "  Conn Info", false, &connStatusLine);
     CUI_statusLineResourceRequest(clientHandle, "   APP Info", false, &appInfoLine);
+    CUI_statusLineResourceRequest(clientHandle, "Sensor Info", false, &sensorInfoLine);
+    CUI_statusLineResourceRequest(clientHandle, "Server Info", false, &serverInfoLine);
+    CUI_statusLineResourceRequest(clientHandle, "Server Info", false, &server2InfoLine);
 
     OtRtosApi_lock();
     otLinkGetFactoryAssignedIeeeEui64(OtInstance_get(), &extAddress);
@@ -413,6 +419,18 @@ void tiopCUIUpdateConnStatus(cuiConn status)
 void tiopCUIUpdateApp(char* appInfo)
 {
     CUI_statusLinePrintf(clientHandle, appInfoLine, appInfo);
+}
+
+void tiopCUIUpdateSensor(char* info) {
+    CUI_statusLinePrintf(clientHandle, sensorInfoLine, info);
+}
+
+void tiopCUIUpdateServer(char* info) {
+    CUI_statusLinePrintf(clientHandle, serverInfoLine, info);
+}
+
+void tiopCUIUpdateServer2(char* info) {
+    CUI_statusLinePrintf(clientHandle, server2InfoLine, info);
 }
 
 /**
